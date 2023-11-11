@@ -18,7 +18,7 @@ class DoctorController extends Controller
             $limit = request()->query('limit') ?? 10;
 
             $doctors = DB::table('users')
-                ->where('users.role_id', 1)
+                ->where('users.role_id', 2)
                 ->join('employees', 'users.id', '=', 'employees.user_id')
                 ->select('users.id',  'employees.id as employee_id', 'users.name', 'users.email', 'users.phone', 'users.address', 'employees.qualification')
                 ->paginate($limit);
